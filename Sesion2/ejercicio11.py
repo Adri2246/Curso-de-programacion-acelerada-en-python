@@ -1,17 +1,28 @@
 '''
 *********** Curso de programación acelerada en Python ************
 Date 04-08-2022
-File: sesion2/ejercicio11.py
-Autor: ..............
+File: Sesion2/ejercicio11.py
+Autor: Adriana Romero
 Action: estructura condicional anidada
+'''
 
-mes = int(input("Introduzca el mes del año: "))
+def isYearLeap(year):
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 400 != 0:
+        return False
+    else:
+        return True
 
-if mes == 1 or mes == 3 or mes == 5 or mes = 7 or mes == 8 or mes == 10 or mes == 11:
-print("El mes tiene 31 días.")
-elif mes == 2:
-print("El mes tiene 28 o 29 días.")
-elif mes == 4 or mes = 6 or mes == 9 or mes == 11:
-print("El mes tiene 30 días.")
-else:
-print("Mes no válido.")
+def daysInMonth(year, month):
+    monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if isYearLeap(year) and month == 2:
+        return 29
+    return monthDays[month - 1]
+
+while True:
+    mes = int(input("Ingrese mes:"))
+    ano = int(input("Ingrese año:"))
+    print(f"El mes {mes}/{ano} contiene {daysInMonth(ano, mes)}")
